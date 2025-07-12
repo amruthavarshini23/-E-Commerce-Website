@@ -1,0 +1,48 @@
+<!-- categories.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Categories</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header"> ... (same nav) ... </header>
+
+  <section class="categories-section">
+    <h2>Product Categories</h2>
+    <div class="category-buttons">
+      <button onclick="filterProducts('Shoes')">Shoes</button>
+      <button onclick="filterProducts('TV')">TV</button>
+      <button onclick="filterProducts('Headphones')">Headphones</button>
+      <button onclick="filterProducts('All')">All</button>
+    </div>
+    <div id="category-products" class="product-grid"></div>
+  </section>
+
+  <footer><p>&copy; 2025 E-Commerce Website</p></footer>
+
+  <script>
+    const allProducts = [
+      { name: "Smart TV", category: "TV" },
+      { name: "Running Shoes", category: "Shoes" },
+      { name: "Bluetooth Headphones", category: "Headphones" },
+      { name: "Sneakers", category: "Shoes" },
+    ];
+    function filterProducts(category) {
+      const container = document.getElementById("category-products");
+      container.innerHTML = "";
+      const filtered = category === "All" ? allProducts : allProducts.filter(p => p.category === category);
+      filtered.forEach(product => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `<h3>${product.name}</h3><p>Category: ${product.category}</p><button onclick="addToCart('${product.name}')">Add to Cart</button>`;
+        container.appendChild(card);
+      });
+    }
+    document.addEventListener("DOMContentLoaded", () => filterProducts("All"));
+  </script>
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+    .cart-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+    .cart-item h3 {
+      margin: 0 0 5px;
+    }
+    .cart-item p {
+      margin: 0 10px 0 0;
+    }
+    .quantity {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .quantity button {
+      width: 30px;
+      height: 30px;
+      font-size: 18px;
+      margin: 0 5px;
+    }
+    .summary {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+    .summary p {
+      margin: 10px 0;
+    }
+    .highlight {
+      background-color: #d4fcdc;
+      color: green;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .btn-pay {
+      background-color: orange;
+      border: none;
+      padding: 10px 20px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Your Cart</h1>
+  <div id="cartItems"></div>
+
+  <div class="summary" id="priceSummary"></div>
+
+  <script>
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartItems = document.getElementById("cartItems");
+    const priceSummary = document.getElementById("priceSummary");
+
+    let total = 0;
+    let itemCount = 0;
+
+    cart.forEach(item => {
+      total += item.price * item.qty;
+      itemCount += item.qty;
+
+      const div = document.createElement("div");
+      div.className = "cart-item";
+      div.innerHTML = `
+        <img src="${item.img}" alt="${item.name}" />
+        <div>
+          <h3>${item.name}</h3>
+          <p>₹${item.price}</p>
+          <div class="quantity">
+            <button onclick="updateQty('${item.name}', -1)">-</button>
+            <span>${item.qty}</span>
+            <button onclick="updateQty('${item.name}', 1)">+</button>
+            <button onclick="removeItem('${item.name}')">🗑️</button>
+          </div>
+        </div>
+      `;
+      cartItems.appendChild(div);
+    });
+
+    const discount = Math.floor(total * 0.35);
+    const coupon = 100;
+    const platformFee = 4;
+    const finalAmount = total - discount - coupon + platformFee;
+
+    priceSummary.innerHTML = `
+      <h3>Price Details</h3>
+      <p>Price (${itemCount} items): ₹${total}</p>
+      <p>Discount: - ₹${discount}</p>
+      <p>Coupons for you: - ₹${coupon}</p>
+      <p>Platform Fee: ₹${platformFee}</p>
+      <hr>
+      <p><strong>Total Amount: ₹${finalAmount}</strong></p>
+      <div class="highlight">
+        ✅ You'll save ₹${discount + coupon} on this order!
+      </div>
+      <button class="btn-pay" onclick="proceedToPayment()">Proceed to Payment</button>
+    `;
+
+    function updateQty(name, delta) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const index = cart.findIndex(item => item.name === name);
+      if (index >= 0) {
+        cart[index].qty += delta;
+        if (cart[index].qty <= 0) cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        location.reload();
+      }
+    }
+
+    function removeItem(name) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart = cart.filter(item => item.name !== name);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      location.reload();
+    }
+
+    function proceedToPayment() {
+      alert("Redirecting to payment gateway...");
+      // window.location.href = "payment.html";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+/* style.css */
+body { font-family: Arial, sans-serif; margin: 0; }
+.header { padding: 10px; background: #333; color: white; }
+.navbar { display: flex; justify-content: space-between; align-items: center; }
+.navbar ul { list-style: none; display: flex; gap: 15px; }
+.navbar a { color: white; text-decoration: none; }
+.offer-banner { background: #003366; color: white; padding: 30px; text-align: center; }
+.shop-now { background: orange; border: none; padding: 10px 20px; color: white; cursor: pointer; }
+.products { padding: 20px; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+.product-card { border: 1px solid #ddd; padding: 10px; border-radius: 10px; background: white; text-align: center; }
+.product-card img { width: 100%; height: auto; }
+.stars { color: gold; }
+
+.cart-section { padding: 20px; background: #f2f2f2; }
+.price-summary {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.saving-box {
+  background-color: #e0fce0;
+  padding: 10px;
+  border-radius: 5px;
+  color: #0a8f08;
+  font-weight: bold;
+}
+.badge {
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  vertical-align: top;
+  margin-left: 4px;
+}
+

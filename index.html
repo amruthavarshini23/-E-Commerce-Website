@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Shop | Home</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="navbar">
+      <h1 class="logo">E-Shop</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">🏠Home</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li>
+  <a href="cart.html">🛒Cart <span id="cart-count" class="badge">0</span></a>
+</li>
+
+          <li><a href="wishlist.html">❤️Wishlist</a></li>
+          <li><a href="login.html">🔐Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="offer-banner">
+    <h2>Big Sale - Up to 50% OFF</h2>
+    <button class="shop-now">Shop Now</button>
+  </section>
+
+  <section class="products">
+    <h2>Popular Products</h2>
+    <div class="product-grid">
+      <div class="product-card"><img src="images/tv.png.png" /><h3>Smart TV</h3><p>₹30,999</p><div class="stars">★★★★★</div><div class="buttons"><button onclick="addToCart('Smart TV')">Add to Cart</button><button onclick="addToWishlist('Smart TV')">♡</button></div></div>
+      <div class="product-card"><img src="images/headphone.png.png" /><h3>Headphones</h3><p>₹1,999</p><div class="stars">★★★★★</div><div class="buttons"><button onclick="addToCart('Headphones')">Add to Cart</button><button onclick="addToWishlist('Headphones')">♡</button></div></div>
+      <div class="product-card"><img src="images/printed shirt.png.png" /><h3>Printed Shirt</h3><p>₹299</p><div class="stars">★★★★★</div><div class="buttons"><button onclick="addToCart('Printed Shirt')">Add to Cart</button><button onclick="addToWishlist('Printed Shirt')">♡</button></div></div>
+      <div class="product-card"><img src="images/floral dress png.png" /><h3>Floral Dress</h3><p>₹1,299</p><div class="stars">★★★★★</div><div class="buttons"><button onclick="addToCart('Floral Dress')">Add to Cart</button><button onclick="addToWishlist('Floral Dress')">♡</button></div></div>
+      <div class="product-card"><img src="images/running shoes.png.png" /><h3>Running Shoes</h3><p>₹1,999</p><div class="stars">★★★★★</div><div class="buttons"><button onclick="addToCart('Running Shoes')">Add to Cart</button><button onclick="addToWishlist('Running Shoes')">♡</button></div></div>
+      <div class="product-card"><img src="images/backpack.png.png" /><h3>Backpack</h3><p>₹1,199</p><div class="stars">★★★★★</div><div class="buttons"><button onclick="addToCart('Backpack')">Add to Cart</button><button onclick="addToWishlist('Backpack')">♡</button></div></div>
+      <div class="product-card"><img src="images/wireless headphones.png.png" /><h3>Wireless Headphones</h3><p>₹2,499</p><div class="stars">★★★★★</div><div class="buttons"><button onclick="addToCart('Wireless Headphones')">Add to Cart</button><button onclick="addToWishlist('Wireless Headphones')">♡</button></div></div>
+      <div class="product-card"><img src="images/casual sweater.png.png" /><h3>Casual Sweater</h3><p>₹1,499</p><div class="stars">★★★★★</div><div class="buttons"><button onclick="addToCart('Casual Sweater')">Add to Cart</button><button onclick="addToWishlist('Casual Sweater')">♡</button></div></div>
+      <div class="product-card"><img src="images/watch.png.png" /><h3>Watch</h3><p>₹1,999</p><div class="stars">★★★★★</div><div class="buttons"><button onclick="addToCart('Watch')">Add to Cart</button><button onclick="addToWishlist('Watch')">♡</button></div></div>
+      <div class="product-card"><img src="images/sunglasses.png.png" /><h3>Sunglasses</h3><p>₹799</p><div class="stars">★★★★★</div><div class="buttons"><button onclick="addToCart('Sunglasses')">Add to Cart</button><button onclick="addToWishlist('Sunglasses')">♡</button></div></div>
+      <div class="product-card"><img src="images/sneakers.png.png" /><h3>Sneakers</h3><p>₹2,199</p><div class="stars">★★★★★</div><div class="buttons"><button onclick="addToCart('Sneakers')">Add to Cart</button><button onclick="addToWishlist('Sneakers')">♡</button></div></div>
+      <div class="product-card"><img src="images/handbag.png.png" /><h3>Handbag</h3><p>₹999</p><div class="stars">★★★★★</div><div class="buttons"><button onclick="addToCart('Handbag')">Add to Cart</button><button onclick="addToWishlist('Handbag')">♡</button></div></div>
+    </div>
+  </section>
+
+  <footer><p>&copy; 2025 E-Commerce Website</p></footer>
+  <script src="js/script.js"></script>
+  <script>
+    // Update cart count on page load
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+    document.getElementById('cart-count').innerText = totalItems;
+  </script>
+</body>
+</html>

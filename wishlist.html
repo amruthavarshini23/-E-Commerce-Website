@@ -1,0 +1,31 @@
+<!-- wishlist.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wishlist</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header"> ... (same nav) ... </header>
+
+  <section class="wishlist-section">
+    <h2>Your Wishlist</h2>
+    <div id="wishlist-items">Products you add to wishlist will appear here.</div>
+  </section>
+
+  <footer><p>&copy; 2025 E-Commerce Website</p></footer>
+  <script>
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    const container = document.getElementById("wishlist-items");
+    container.innerHTML = "";
+    wishlist.forEach(p => {
+      const div = document.createElement("div");
+      div.innerHTML = `<p><b>${p}</b> <button onclick="addToCart('${p}')">Add to Cart</button></p>`;
+      container.appendChild(div);
+    });
+  </script>
+  <script src="js/script.js"></script>
+</body>
+</html>
