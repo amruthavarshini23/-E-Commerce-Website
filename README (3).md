@@ -54,6 +54,7 @@ E-commerce-website/
 ## 🎥 Demo
 
 🎬 A demo video has been shared on LinkedIn as part of the project submission.
+https://www.linkedin.com/posts/activity-7349687889355522048-Ugk4?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEvlVXABl18-Cyb2TKKk1l4zjjRx-cFEEbg
 
 ---
 
